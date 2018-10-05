@@ -4,8 +4,12 @@ import org.springframework.data.repository.CrudRepository;
 
 import br.com.cp.comparefacilrest.model.User;
 
+import java.util.List;
+
 public interface UserRepository extends CrudRepository<User, Long>{
 	
-	User findByName(String nome);
+
+
+	List<User> findAll();
 
 }

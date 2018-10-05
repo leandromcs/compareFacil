@@ -1,21 +1,32 @@
 package br.com.cp.comparefacilrest.model;
 
+import com.sun.istack.internal.NotNull;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class User {
-	
+
+
+
 	@Id
-	private Long id;
-	
+	private int id;
+
+	@NotBlank
 	private String nome;
 
-	public Long getId() {
+
+
+
+
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
