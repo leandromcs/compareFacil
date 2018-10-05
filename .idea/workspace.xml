@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eaeda45c-9afb-48c2-8f46-13e224a7a7bc" name="Default Changelist" comment="">
+    <list default="true" id="eaeda45c-9afb-48c2-8f46-13e224a7a7bc" name="Default Changelist" comment="Mudancas na estrutura de pastas">
       <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change beforePath="" afterPath="$PROJECT_DIR$/comparefacil-rest.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
@@ -338,10 +338,18 @@
       <updated>1538692407983</updated>
       <workItem from="1538692410119" duration="5338000" />
     </task>
+    <task id="LOCAL-00001" summary="Mudancas na estrutura de pastas">
+      <created>1538701229228</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1538701229228</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6274000" />
+    <option name="totallyTimeSpent" value="6437000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -383,6 +391,12 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="Mudancas na estrutura de pastas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mudancas na estrutura de pastas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
