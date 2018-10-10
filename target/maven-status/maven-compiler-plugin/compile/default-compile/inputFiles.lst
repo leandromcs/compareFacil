@@ -1,0 +1,6 @@
+/home/pedro-ramalho/Documentos/Repositorio/CP/comparefacil-rest/src/main/java/br/com/cp/comparefacilrest/ComparefacilRestApplication.java
+/home/pedro-ramalho/Documentos/Repositorio/CP/comparefacil-rest/src/main/java/br/com/cp/comparefacilrest/model/User.java
+/home/pedro-ramalho/Documentos/Repositorio/CP/comparefacil-rest/src/main/java/br/com/cp/comparefacilrest/repository/UserRepository.java
+/home/pedro-ramalho/Documentos/Repositorio/CP/comparefacil-rest/src/main/java/br/com/cp/comparefacilrest/service/impl/UserServiceImpl.java
+/home/pedro-ramalho/Documentos/Repositorio/CP/comparefacil-rest/src/main/java/br/com/cp/comparefacilrest/service/impl/UserService.java
+/home/pedro-ramalho/Documentos/Repositorio/CP/comparefacil-rest/src/main/java/br/com/cp/comparefacilrest/controller/UserController.java

@@ -1,0 +1,8 @@
+
+‚squid:UselessImportCheck"RRemove this unused import 'org.springframework.web.bind.annotation.RequestMethod'.(Ê™Ğÿûÿÿÿÿ8‰ıê ä,
+€squid:UselessImportCheck"PRemove this unused import 'br.com.cp.comparefacilrest.service.impl.UserService'.(ùïÇıÿÿÿÿ8¨¶ÒÚå,
+tsquid:UselessImportCheck"DRemove this unused import 'org.springframework.http.ResponseEntity'.(¶¯ø¦úÿÿÿÿ8Í‚ÜÚå,
+€squid:UselessImportCheck"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ8„Ûò›å,
+hsquid:UselessImportCheck"8Remove this unused import 'java.net.URISyntaxException'.(Ä®íÿÿÿÿÿ8Á³äÚå,
+Tsquid:UselessImportCheck")Remove this unused import 'java.net.URI'.(Ö¦¨°8Ò”ÙÚå,
+squid:UselessImportCheck	"QRemove this unused import 'org.springframework.web.bind.annotation.PathVariable'.(¹ûñÅşÿÿÿÿ8”“‰²å,
