@@ -1,7 +1,5 @@
 package br.com.cp.comparefacilrest.model;
 
-import com.sun.istack.internal.NotNull;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,8 +11,6 @@ import javax.validation.constraints.NotBlank;
 @Entity
 public class User {
 
-
-
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -22,11 +18,6 @@ public class User {
 	@NotBlank
 	@Column(name = "name")
 	private String nome;
-
-
-
-
-
 
 	public Long getId() {
 		return id;

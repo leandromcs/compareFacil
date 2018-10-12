@@ -17,13 +17,11 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;
-
 
     public UserController(UserService userService) {
 
@@ -31,8 +29,7 @@ public class UserController {
 
     }
 
-
-    @PostMapping(value = "/users")
+    @PostMapping
     public ResponseEntity<User> create(@RequestBody UserDTO dto) {
         User user = new User();
         user.setNome(dto.getNome());
@@ -42,7 +39,7 @@ public class UserController {
     }
 
 
-    @GetMapping(value = "/users")
+    @GetMapping
     public ResponseEntity<List<User>> getAll() {
         List<User> users = userService.findAll();
 
@@ -50,7 +47,7 @@ public class UserController {
 
     }
 
-    @PutMapping(value = "/users")
+    @PutMapping
     public ResponseEntity updateUser(@Valid @RequestBody UserDTO dto, User user) {
 
         if (dto.getId() == null) {

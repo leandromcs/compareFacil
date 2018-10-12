@@ -9,35 +9,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
-/**
- * Service Implementation for managing .
- */
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    private final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
-
     @Autowired
-    private final UserRepository userRepository;
-
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private UserRepository userRepository;
 
     @Override
     public User save(User user) {
-        log.debug("Request to save UserServiceImpl : {}", user);
         return userRepository.save(user);
     }
-
 
     @Override
     @Transactional(readOnly = true)
     public List<User> findAll() {
-        log.debug("Request to get all Usuario");
-
         return userRepository.findAll();
     }
 
