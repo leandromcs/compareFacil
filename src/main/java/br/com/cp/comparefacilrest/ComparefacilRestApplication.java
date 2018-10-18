@@ -2,7 +2,7 @@ package br.com.cp.comparefacilrest;
 
 import br.com.cp.comparefacilrest.controller.UserController;
 import br.com.cp.comparefacilrest.repository.UserRepository;
-import br.com.cp.comparefacilrest.service.impl.UserService;
+import br.com.cp.comparefacilrest.impl.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;

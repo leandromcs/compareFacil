@@ -1,5 +1,0 @@
-
-Ssquid:S1191"5Use classes from the Java API instead of Sun classes.(¤œĞ8ÉŠÏ ä,
-gsquid:UselessImportCheck"<Remove this unused import 'com.sun.istack.internal.NotNull'.(¤œĞ8ÉŠÏ ä,
-jsquid:UselessImportCheck
-"@Remove this unused import 'javax.persistence.SequenceGenerator'.(ï™›98¤Ç¢±å,

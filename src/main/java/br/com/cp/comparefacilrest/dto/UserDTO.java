@@ -2,7 +2,7 @@ package br.com.cp.comparefacilrest.dto;
 
 public class UserDTO {
 
-    private String id;
+    private Long id;
     private String nome;
 
     public String getNome() {
@@ -13,11 +13,11 @@ public class UserDTO {
         this.nome = nome;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }
