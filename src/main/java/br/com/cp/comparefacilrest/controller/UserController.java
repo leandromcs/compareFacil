@@ -16,13 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;
-
 
     public UserController(UserService userService) {
 
@@ -30,15 +28,14 @@ public class UserController {
 
     }
 
-
-    @PostMapping(value = "/users")
+    @PostMapping
     public ResponseEntity<User> create(@RequestBody UserDTO dto) {
         User user = userService.save(dto);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
 
-    @GetMapping(value = "/users")
+    @GetMapping
     public ResponseEntity<List<User>> getAll() {
         List<User> users = userService.findAll();
 
