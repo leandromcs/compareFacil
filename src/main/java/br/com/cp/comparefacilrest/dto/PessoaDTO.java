@@ -1,6 +1,6 @@
 package br.com.cp.comparefacilrest.dto;
 
-public class UserDTO {
+public class PessoaDTO {
 
     private Long id;
     private String nome;
