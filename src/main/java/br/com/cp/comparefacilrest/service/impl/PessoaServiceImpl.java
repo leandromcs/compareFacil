@@ -1,6 +1,7 @@
 package br.com.cp.comparefacilrest.service.impl;
 
 import br.com.cp.comparefacilrest.dto.PessoaDTO;
+import br.com.cp.comparefacilrest.model.AtivoEnum;
 import br.com.cp.comparefacilrest.model.Pessoa;
 import br.com.cp.comparefacilrest.repository.PessoaRepository;
 import br.com.cp.comparefacilrest.service.PessoaService;
@@ -23,8 +24,14 @@ public class PessoaServiceImpl implements PessoaService {
     @Transactional(propagation = Propagation.REQUIRED)
     public Pessoa save(PessoaDTO dto) {
         Pessoa pessoa = new Pessoa();
-        pessoa.setId(dto.getId());
+        pessoa.setCpf(dto.getCpf());
         pessoa.setNome(dto.getNome());
+        pessoa.setEmail(dto.getEmail());
+        pessoa.setPassword(dto.getPassword());
+        pessoa.setDataNascimento(dto.getDataNascimento());
+        pessoa.setAtivo(dto.getAtivo());
+        pessoa.setCargo(dto.getCargo());
+        pessoa.setUltimoAcesso(dto.getUltimoAcesso());
 
         return pessoaRepository.save(pessoa);
     }
@@ -38,10 +45,15 @@ public class PessoaServiceImpl implements PessoaService {
     @Transactional(propagation = Propagation.REQUIRED)
     public Pessoa update(PessoaDTO dto) {
         Optional<Pessoa> consultado = this.pessoaRepository.findById(dto.getId());
-        Pessoa pessoa = consultado.get();
 
-        pessoa.setId(dto.getId());
+        Pessoa pessoa = consultado.get();
+        pessoa.setCpf(dto.getCpf());
         pessoa.setNome(dto.getNome());
+        pessoa.setEmail(dto.getEmail());
+        pessoa.setPassword(dto.getPassword());
+        pessoa.setDataNascimento(dto.getDataNascimento());
+        pessoa.setCargo(dto.getCargo());
+        pessoa.setUltimoAcesso(dto.getUltimoAcesso());
 
         return pessoaRepository.save(pessoa);
     }
@@ -51,7 +63,8 @@ public class PessoaServiceImpl implements PessoaService {
     public void delete(Long id) {
         Optional<Pessoa> consultado = this.pessoaRepository.findById(id);
         Pessoa pessoa = consultado.get();
-        pessoaRepository.delete(pessoa);
+        pessoa.setAtivo(AtivoEnum.INATIVO);
+        pessoaRepository.save(pessoa);
     }
 
 

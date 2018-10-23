@@ -45,7 +45,7 @@ public class PessoaController {
         }
     }
 
-    @DeleteMapping(value = "/pessoas/{id}")
+    @PutMapping(value = "/pessoas/{id}")
     public ResponseEntity deletePessoa(@PathVariable Long id) {
 
         if (id == null) {
