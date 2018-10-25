@@ -10,8 +10,8 @@ ${AnsiColor.BRIGHT_BLACK}           ░ ░             ░      ░  ░ ░  �
 
 
 
-${AnsiColor.BRIGHT_BLUE}:: SISDET 1.0 :: FNDE ::
+${AnsiColor.BRIGHT_BLUE}:: CP 1.0 :: CEUB ::
 :: Spring boot release: ${spring-boot.version} ::
-:: http://www.fnde.gov.br ::${AnsiColor.DEFAULT}
+
 
                    ░
