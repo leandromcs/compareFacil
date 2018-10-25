@@ -34,7 +34,7 @@ public class PessoaController {
 
     }
 
-    @PutMapping(value = "/pessoas")
+    @PutMapping
     public ResponseEntity updatePessoa(@RequestBody PessoaDTO dto) {
 
         if (dto == null) {
@@ -45,7 +45,7 @@ public class PessoaController {
         }
     }
 
-    @PutMapping(value = "/pessoas/{id}")
+    @PutMapping(value = "/delete/{id}")
     public ResponseEntity deletePessoa(@PathVariable Long id) {
 
         if (id == null) {
