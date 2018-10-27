@@ -34,6 +34,14 @@ public class PessoaController {
 
     }
 
+    @GetMapping("/ativas")
+    public ResponseEntity<List<Pessoa>> getPessoasAtivas() {
+        List<Pessoa> pessoas = pessoaService.getPessoasAtivas();
+
+        return new ResponseEntity<>(pessoas, HttpStatus.OK);
+
+    }
+
     @PutMapping
     public ResponseEntity updatePessoa(@RequestBody PessoaDTO dto) {
 

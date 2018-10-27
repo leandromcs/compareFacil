@@ -14,6 +14,8 @@ public interface PessoaService {
     Pessoa update(PessoaDTO dto);
 
     void delete(Long id);
+
+    List<Pessoa> getPessoasAtivas();
 }
 
 

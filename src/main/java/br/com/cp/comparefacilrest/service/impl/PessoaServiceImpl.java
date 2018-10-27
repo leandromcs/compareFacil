@@ -42,6 +42,11 @@ public class PessoaServiceImpl implements PessoaService {
     }
 
     @Override
+    public List<Pessoa> getPessoasAtivas() {
+        return this.pessoaRepository.getPessoasAtivas();
+    }
+
+    @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public Pessoa update(PessoaDTO dto) {
         Optional<Pessoa> consultado = this.pessoaRepository.findById(dto.getId());
