@@ -1,5 +1,6 @@
 package br.com.cp.comparefacilrest.service.impl;
 
+import br.com.cp.comparefacilrest.dto.ProvedoraDTO;
 import br.com.cp.comparefacilrest.exception.NegocioException;
 import br.com.cp.comparefacilrest.model.Provedora;
 import br.com.cp.comparefacilrest.repository.ProvedoraRepository;
@@ -34,6 +35,37 @@ public class ProvedoraServiceImpl {
             return provedora;
         } else {
             throw new NegocioException("Não existe Provedora cadastrada com esse id");
+        }
+    }
+
+    public Provedora save(ProvedoraDTO dto) throws NegocioException {
+
+        Provedora provedora = new Provedora(dto.getId(), dto.getNome(), dto.getUrl());
+        Provedora salvado = this.repository.save(provedora);
+        if(salvado != null){
+            return salvado;
+        } else {
+            throw new NegocioException("Provedora não cadastrada");
+        }
+    }
+
+    public void delete(Long id) throws NegocioException{
+        this.repository.deleteById(id);
+    }
+
+    public Provedora atualizarProvedora(ProvedoraDTO dto) throws NegocioException{
+        Optional<Provedora> consultado = this.repository.findById(dto.getId());
+        Provedora provedora = consultado.get();
+
+        provedora.setNome(dto.getNome());
+        provedora.setUrl(dto.getUrl());
+
+        Provedora atualizado = this.repository.save(provedora);
+
+        if(atualizado != null){
+            return atualizado;
+        } else {
+            throw new NegocioException("Problema ao atualizar entidade");
         }
     }
 }

@@ -1,5 +1,7 @@
 package br.com.cp.comparefacilrest.model;
 
+import lombok.extern.apachecommons.CommonsLog;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -9,6 +11,7 @@ public class Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idt_pessoa")
     private Long id;
 
     @Column(name = "cpf_pessoa")

@@ -24,7 +24,7 @@ public class ProvedoraController {
         try {
             provedoras = this.service.getAll();
         } catch (NegocioException e) {
-            e.getMessage();
+            e.getStackTrace();
     }
         return new ResponseEntity<>(provedoras, HttpStatus.OK);
     }
@@ -40,15 +40,36 @@ public class ProvedoraController {
         return new ResponseEntity<>(provedora, HttpStatus.OK);
     }
 
-//    @PostMapping
-//    public ResponseEntity<Provedora> cadastrarProvedora(@PathVariable ProvedoraDTO dto){
-//        Provedora provedora = new Provedora();
-//        try {
-//            provedora = this.service.save(dto);
-//        } catch (NegocioException e) {
-//            e.getMessage();
-//        }
-//        return new ResponseEntity<>(provedora, HttpStatus.OK);
-//    }
+    @PostMapping
+    public ResponseEntity<Provedora> cadastrarProvedora(@RequestBody ProvedoraDTO dto){
+        Provedora provedora = new Provedora();
+        try {
+            provedora = this.service.save(dto);
+        } catch (NegocioException e) {
+            e.getMessage();
+        }
+        return new ResponseEntity<>(provedora, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Provedora> deletarProvedora(@PathVariable Long id){
+        try {
+            this.service.delete(id);
+        } catch (NegocioException e) {
+            e.getStackTrace();
+        }
+        return new ResponseEntity("Provedora deletada com sucesso", HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity<Provedora> atualizarProvedora(@RequestBody ProvedoraDTO dto){
+        Provedora provedora = new Provedora();
+        try {
+            provedora = this.service.atualizarProvedora(dto);
+        } catch (NegocioException e) {
+            e.getMessage();
+        }
+        return new ResponseEntity(provedora, HttpStatus.OK);
+    }
 
 }
