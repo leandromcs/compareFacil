@@ -79,11 +79,6 @@ public class ColaboracaoServiceImpl {
         colaboracao.setAprovado(dto.getAprovado());
         colaboracao.setVersao(dto.getVersao());
         colaboracao.setDataAtualizacao(dto.getDataAtualizacao());
-
-        Optional<PlanoServico> planoServico = this.planoServicoRepository.findById(dto.getIdPlanoServico());
-
-        colaboracao.setPlanoServico(planoServico.get());
-
         Colaboracao atualizado = this.repository.save(colaboracao);
 
         if(atualizado != null){

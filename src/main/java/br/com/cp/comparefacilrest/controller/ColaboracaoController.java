@@ -58,7 +58,7 @@ public class ColaboracaoController {
             return new ResponseEntity<>(colaboracao, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity deleteColaboracao(@PathVariable Long id) {
         try {
             colaboracaoService.delete(id);
