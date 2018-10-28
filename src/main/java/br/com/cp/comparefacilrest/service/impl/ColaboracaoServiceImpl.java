@@ -54,10 +54,7 @@ public class ColaboracaoServiceImpl {
 
     public Colaboracao save(ColaboracaoDTO dto) throws NegocioException {
 
-        Optional<Pessoa> pessoaConsultada = this.pessoaRepository.findById(dto.getIdPessoa());
-        Optional<PlanoServico> planoServicoConsultado = this.planoServicoRepository.findById(dto.getIdPlanoServico());
-
-        Colaboracao colaboracao = new Colaboracao(dto.getDataCriacao(), dto.getDescricao(), dto.getNome(), dto.getAprovado(), dto.getVersao(), dto.getDataAtualizacao(), pessoaConsultada.get(), planoServicoConsultado.get());
+        Colaboracao colaboracao = new Colaboracao(dto.getDataCriacao(), dto.getDescricao(), dto.getNome(), dto.getAprovado(), dto.getVersao(), dto.getDataAtualizacao(), dto.getPessoa(), dto.getPlanoServico());
         Colaboracao salvado = this.repository.save(colaboracao);
         if(salvado != null){
             return salvado;

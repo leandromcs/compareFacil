@@ -1,6 +1,8 @@
 package br.com.cp.comparefacilrest.dto;
 
 import br.com.cp.comparefacilrest.model.AprovadoEnum;
+import br.com.cp.comparefacilrest.model.Pessoa;
+import br.com.cp.comparefacilrest.model.PlanoServico;
 
 import java.util.Date;
 
@@ -13,12 +15,12 @@ public class ColaboracaoDTO {
     private AprovadoEnum aprovado;
     private String versao;
     private Date dataAtualizacao;
-    private Long idPessoa;
-    private Long idPlanoServico;
+    private Pessoa pessoa;
+    private PlanoServico planoServico;
 
     public ColaboracaoDTO(){}
 
-    public ColaboracaoDTO(Long id, Date dataCriacao, String descricao, String nome, AprovadoEnum aprovado, String versao, Date dataAtualizacao, Long idPessoa, Long idPlanoServico) {
+    public ColaboracaoDTO(Long id, Date dataCriacao, String descricao, String nome, AprovadoEnum aprovado, String versao, Date dataAtualizacao, Pessoa pessoa, PlanoServico planoServico) {
         this.id = id;
         this.dataCriacao = dataCriacao;
         this.descricao = descricao;
@@ -26,8 +28,8 @@ public class ColaboracaoDTO {
         this.aprovado = aprovado;
         this.versao = versao;
         this.dataAtualizacao = dataAtualizacao;
-        this.idPessoa = idPessoa;
-        this.idPlanoServico = idPlanoServico;
+        this.pessoa = pessoa;
+        this.planoServico = planoServico;
     }
 
     public Long getId() {
@@ -86,19 +88,19 @@ public class ColaboracaoDTO {
         this.dataAtualizacao = dataAtualizacao;
     }
 
-    public Long getIdPessoa() {
-        return idPessoa;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setIdPessoa(Long idPessoa) {
-        this.idPessoa = idPessoa;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
-    public Long getIdPlanoServico() {
-        return idPlanoServico;
+    public PlanoServico getPlanoServico() {
+        return planoServico;
     }
 
-    public void setIdPlanoServico(Long idPlanoServico) {
-        this.idPlanoServico = idPlanoServico;
+    public void setPlanoServico(PlanoServico planoServico) {
+        this.planoServico = planoServico;
     }
 }
