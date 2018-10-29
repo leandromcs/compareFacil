@@ -3,8 +3,6 @@ package br.com.cp.comparefacilrest.service.impl;
 import br.com.cp.comparefacilrest.dto.ColaboracaoDTO;
 import br.com.cp.comparefacilrest.exception.NegocioException;
 import br.com.cp.comparefacilrest.model.Colaboracao;
-import br.com.cp.comparefacilrest.model.Pessoa;
-import br.com.cp.comparefacilrest.model.PlanoServico;
 import br.com.cp.comparefacilrest.repository.ColaboracaoRepository;
 import br.com.cp.comparefacilrest.repository.PessoaRepository;
 import br.com.cp.comparefacilrest.repository.PlanoServicoRepository;
@@ -22,10 +20,10 @@ public class ColaboracaoServiceImpl {
 
     @Autowired
     private ColaboracaoRepository repository;
-    
+
     @Autowired
     private PessoaRepository pessoaRepository;
-    
+
     @Autowired
     private PlanoServicoRepository planoServicoRepository;
 
