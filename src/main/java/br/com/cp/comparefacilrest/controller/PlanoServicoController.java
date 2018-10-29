@@ -31,7 +31,7 @@ public class PlanoServicoController {
 
     }
 
-    @PutMapping(value = "/planoserviço")
+    @PutMapping
     public ResponseEntity updatePlanoServico(@RequestBody PlanoServicoDTO dto) {
 
         if (dto == null) {
@@ -42,7 +42,7 @@ public class PlanoServicoController {
         }
     }
 
-    @PutMapping(value = "/planoServico/{id}")
+    @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity deletePlanoServico(@PathVariable Long id) {
 
         if (id == null) {

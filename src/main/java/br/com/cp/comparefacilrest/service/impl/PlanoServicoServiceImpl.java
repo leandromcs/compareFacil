@@ -55,9 +55,7 @@ public class PlanoServicoServiceImpl implements PlanoServicoService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public void delete(Long id) {
-        Optional<PlanoServico> consultado = this.planoServicoRepository.findById(id);
-        PlanoServico planoServico = consultado.get();
-        planoServicoRepository.save(planoServico);
+        this.planoServicoRepository.deleteById(id);
     }
 
 

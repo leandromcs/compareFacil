@@ -1,11 +1,8 @@
 package br.com.cp.comparefacilrest.controller;
 
-import br.com.cp.comparefacilrest.dto.ColaboracaoDTO;
 import br.com.cp.comparefacilrest.dto.ComentarioDTO;
 import br.com.cp.comparefacilrest.exception.NegocioException;
-import br.com.cp.comparefacilrest.model.Colaboracao;
 import br.com.cp.comparefacilrest.model.Comentario;
-import br.com.cp.comparefacilrest.service.impl.ColaboracaoServiceImpl;
 import br.com.cp.comparefacilrest.service.impl.ComentarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

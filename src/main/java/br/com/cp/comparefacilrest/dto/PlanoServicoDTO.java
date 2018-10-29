@@ -8,7 +8,7 @@ public class PlanoServicoDTO  {
     private Long id;
     private Provedora provedora;
     private String nome;
-    private Float valor;
+    private Double valor;
     private String descricao;
 
     public Long getId() {
@@ -35,11 +35,11 @@ public class PlanoServicoDTO  {
         this.nome = nome;
     }
 
-    public Float getValor() {
+    public Double getValor() {
         return valor;
-    }    
+    }
 
-    public void setValor(Float valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
