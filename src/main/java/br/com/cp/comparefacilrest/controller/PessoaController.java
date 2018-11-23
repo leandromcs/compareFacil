@@ -2,6 +2,7 @@ package br.com.cp.comparefacilrest.controller;
 
 import br.com.cp.comparefacilrest.dto.PessoaDTO;
 import br.com.cp.comparefacilrest.dto.PessoaDTO;
+import br.com.cp.comparefacilrest.model.AtivoEnum;
 import br.com.cp.comparefacilrest.model.Pessoa;
 import br.com.cp.comparefacilrest.model.Pessoa;
 import br.com.cp.comparefacilrest.service.PessoaService;
@@ -22,6 +23,7 @@ public class PessoaController {
 
     @PostMapping
     public ResponseEntity<Pessoa> create(@RequestBody PessoaDTO dto) {
+        dto.setAtivo(AtivoEnum.ATIVO);
         Pessoa pessoa = pessoaService.save(dto);
         return new ResponseEntity<>(pessoa, HttpStatus.OK);
     }
@@ -62,6 +64,13 @@ public class PessoaController {
             pessoaService.delete(id);
             return new ResponseEntity<>("Deletado com sucesso",HttpStatus.OK);
         }
+    }
+    @GetMapping(value = "/{id}")
+    public ResponseEntity getPessoaById(@PathVariable Long id){
+
+        Pessoa pessoa = pessoaService.findById(id);
+
+        return new ResponseEntity<>(pessoa,HttpStatus.OK);
     }
 
 }

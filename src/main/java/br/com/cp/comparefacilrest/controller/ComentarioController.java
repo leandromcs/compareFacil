@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -21,7 +22,9 @@ public class ComentarioController {
     @PostMapping
     public ResponseEntity<Comentario> create(@RequestBody ComentarioDTO dto) {
         Comentario comentario = null;
+        System.out.print("Comentario: "+comentario);
         try {
+            dto.setDataCriacao(new Date());
             comentario = comentarioService.save(dto);
         } catch (NegocioException e) {
             e.getMessage();
@@ -34,6 +37,17 @@ public class ComentarioController {
         List<Comentario> comentarios = null;
         try {
             comentarios = comentarioService.getAll();
+        } catch (NegocioException e) {
+            e.getMessage();
+        }
+        return new ResponseEntity<>(comentarios, HttpStatus.OK);
+    }
+
+    @GetMapping("/comentarios/colaboracao/{id}")
+    public ResponseEntity<List<Comentario>> getComentarioByIdColaboracao(@PathVariable Long id){
+        List<Comentario> comentarios = null;
+        try {
+            comentarios = comentarioService.getComentarioByIdColaboracao(id);
         } catch (NegocioException e) {
             e.getMessage();
         }

@@ -9,7 +9,7 @@ public class Comentario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idt_colaboracao")
+    @Column(name = "idt_comentario")
     private Long id;
 
     @Column(name = "dti_criacao_comentario")

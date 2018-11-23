@@ -1,14 +1,11 @@
 package br.com.cp.comparefacilrest.service.impl;
 
-import br.com.cp.comparefacilrest.dto.ColaboracaoDTO;
 import br.com.cp.comparefacilrest.dto.ComentarioDTO;
 import br.com.cp.comparefacilrest.exception.NegocioException;
-import br.com.cp.comparefacilrest.model.Colaboracao;
 import br.com.cp.comparefacilrest.model.Comentario;
 import br.com.cp.comparefacilrest.repository.ColaboracaoRepository;
 import br.com.cp.comparefacilrest.repository.ComentarioRepository;
 import br.com.cp.comparefacilrest.repository.PessoaRepository;
-import br.com.cp.comparefacilrest.repository.PlanoServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -45,7 +42,7 @@ public class ComentarioServiceImpl {
         if(comentario != null){
             return comentario;
         } else {
-            throw new NegocioException("Não existe COmentario cadastrado com esse id");
+            throw new NegocioException("Não existe Comentario cadastrado com esse id");
         }
     }
 
@@ -62,5 +59,13 @@ public class ComentarioServiceImpl {
 
     public void delete(Long id) throws NegocioException{
         this.comentarioRepository.deleteById(id);
+    }
+
+    public List<Comentario> getComentarioByIdColaboracao(Long id) throws NegocioException{
+        List<Long> comentarioId = this.getComentarioId(id);
+        return this.comentarioRepository.findById(comentarioId);
+    }
+    private List<Long> getComentarioId(Long id) throws NegocioException {
+        return this.comentarioRepository.getComentarioByIdColaboracao(id);
     }
 }

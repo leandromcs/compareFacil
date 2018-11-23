@@ -16,6 +16,8 @@ public interface PessoaService {
     void delete(Long id);
 
     List<Pessoa> getPessoasAtivas();
+
+    Pessoa findById(Long id);
 }
 
 

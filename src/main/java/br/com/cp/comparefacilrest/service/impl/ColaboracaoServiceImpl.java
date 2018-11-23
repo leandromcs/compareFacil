@@ -3,6 +3,7 @@ package br.com.cp.comparefacilrest.service.impl;
 import br.com.cp.comparefacilrest.dto.ColaboracaoDTO;
 import br.com.cp.comparefacilrest.exception.NegocioException;
 import br.com.cp.comparefacilrest.model.Colaboracao;
+import br.com.cp.comparefacilrest.model.PlanoServico;
 import br.com.cp.comparefacilrest.repository.ColaboracaoRepository;
 import br.com.cp.comparefacilrest.repository.PessoaRepository;
 import br.com.cp.comparefacilrest.repository.PlanoServicoRepository;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,10 +24,10 @@ public class ColaboracaoServiceImpl {
     private ColaboracaoRepository repository;
 
     @Autowired
-    private PessoaRepository pessoaRepository;
+    private PlanoServicoRepository planoServicoRepository;
 
     @Autowired
-    private PlanoServicoRepository planoServicoRepository;
+    private PessoaRepository pessoaRepository;
 
     public List<Colaboracao> getAll() throws NegocioException{
         List<Colaboracao> colaboracaos = repository.findAll();
@@ -48,11 +50,13 @@ public class ColaboracaoServiceImpl {
 
     public List<Colaboracao> getColaboracoesAprovadas(){
         return this.repository.getColaboracoesAprovadas();
+
     }
-
+    @Transactional(propagation = Propagation.REQUIRED)
     public Colaboracao save(ColaboracaoDTO dto) throws NegocioException {
+        Optional<PlanoServico> consultado = this.planoServicoRepository.findById(dto.getPlanoServico().getId());
 
-        Colaboracao colaboracao = new Colaboracao(dto.getDataCriacao(), dto.getDescricao(), dto.getNome(), dto.getAprovado(), dto.getVersao(), dto.getDataAtualizacao(), dto.getPessoa(), dto.getPlanoServico());
+        Colaboracao colaboracao = new Colaboracao(new Date(), dto.getDescricao(), dto.getNome(), dto.getAprovado(), dto.getVersao(), dto.getDataAtualizacao(), dto.getPessoa(), consultado.get());
         Colaboracao salvado = this.repository.save(colaboracao);
         if(salvado != null){
             return salvado;

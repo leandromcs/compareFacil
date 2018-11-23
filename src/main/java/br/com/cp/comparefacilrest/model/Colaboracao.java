@@ -33,7 +33,7 @@ public class Colaboracao {
     @ManyToOne
     private Pessoa pessoa;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private PlanoServico planoServico;
 
     public Colaboracao(Date dataCriacao, String descricao, String nome, AprovadoEnum aprovado, String versao, Date dataAtualizacao, Pessoa pessoa, PlanoServico planoServico) {
