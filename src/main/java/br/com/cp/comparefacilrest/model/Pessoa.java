@@ -40,6 +40,7 @@ public class Pessoa {
     @Enumerated(EnumType.STRING)
     private CargoEnum cargo;
 
+
     public Long getId() {
         return id;
     }
@@ -111,4 +112,6 @@ public class Pessoa {
     public void setCargo(CargoEnum cargo) {
         this.cargo = cargo;
     }
+
+
 }

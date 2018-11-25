@@ -50,12 +50,11 @@ public class AvaliacaoColaboracaoServiceImpl {
     }
 
     public AvaliacaoColaboracao save(AvaliacaoColaboracaoDTO dto) throws NegocioException {
-
         Optional<Colaboracao> colaboracao = colaboracaoRepository.findById(dto.getIdColaboracao());
-        Optional<Pessoa> pessoa = pessoaRepository.findById(dto.getIdPessoa());
+       // Optional<Pessoa> pessoa = pessoaRepository.findById(dto.getIdPessoa());
 
         AvaliacaoColaboracao avaliacaoColaboracao =
-                new AvaliacaoColaboracao(new Date(), dto.getComentario(), pessoa.get(), colaboracao.get());
+                new AvaliacaoColaboracao(new Date(), dto.getComentario(), null, colaboracao.get());
         AvaliacaoColaboracao salvado = this.repository.save(avaliacaoColaboracao);
         if(salvado != null){
             return salvado;

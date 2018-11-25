@@ -33,6 +33,7 @@ public class Colaboracao {
     @ManyToOne
     private Pessoa pessoa;
 
+
     @ManyToOne(fetch = FetchType.EAGER)
     private PlanoServico planoServico;
 
@@ -121,4 +122,5 @@ public class Colaboracao {
     public void setPlanoServico(PlanoServico planoServico) {
         this.planoServico = planoServico;
     }
+
 }
