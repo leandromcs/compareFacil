@@ -13,11 +13,8 @@ public interface ComentarioRepository extends CrudRepository<Comentario, Long>{
 
 	List<Comentario> findAll();
 
-	@Query("SELECT c FROM Comentario c")
-    List<Colaboracao> getColaboracoesAprovadas();
-
-	@Query("SELECT comentario.id FROM Comentario comentario WHERE comentario.colaboracao.id = :id")
-	List<Long> getComentarioByIdColaboracao(@Param("id") Long id);
+	@Query("SELECT comentario FROM Comentario comentario WHERE comentario.colaboracao.id = :id")
+	List<Comentario> getComentarioByIdColaboracao(@Param("id") Long id);
 
 	List<Comentario> findById(List<Long> id);
 }
