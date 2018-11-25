@@ -2,6 +2,7 @@ package br.com.cp.comparefacilrest.service.impl;
 
 import br.com.cp.comparefacilrest.dto.ColaboracaoDTO;
 import br.com.cp.comparefacilrest.exception.NegocioException;
+import br.com.cp.comparefacilrest.model.AprovadoEnum;
 import br.com.cp.comparefacilrest.model.Colaboracao;
 import br.com.cp.comparefacilrest.model.PlanoServico;
 import br.com.cp.comparefacilrest.repository.ColaboracaoRepository;
@@ -56,7 +57,7 @@ public class ColaboracaoServiceImpl {
     public Colaboracao save(ColaboracaoDTO dto) throws NegocioException {
         Optional<PlanoServico> consultado = this.planoServicoRepository.findById(dto.getPlanoServico().getId());
 
-        Colaboracao colaboracao = new Colaboracao(new Date(), dto.getDescricao(), dto.getNome(), dto.getAprovado(), dto.getVersao(), dto.getDataAtualizacao(), dto.getPessoa(), consultado.get());
+        Colaboracao colaboracao = new Colaboracao(new Date(), dto.getDescricao(), dto.getNome(), AprovadoEnum.PENDENTE, dto.getVersao(), dto.getDataAtualizacao(), dto.getPessoa(), consultado.get());
         Colaboracao salvado = this.repository.save(colaboracao);
         if(salvado != null){
             return salvado;
@@ -67,6 +68,10 @@ public class ColaboracaoServiceImpl {
 
     public void delete(Long id) throws NegocioException{
         this.repository.deleteById(id);
+    }
+
+    public List<Colaboracao> dynamicSearch(String pesquisa) throws NegocioException{
+       return this.repository.getColaboracao(pesquisa);
     }
 
     public Colaboracao atualizarColaboracao(ColaboracaoDTO dto) throws NegocioException{

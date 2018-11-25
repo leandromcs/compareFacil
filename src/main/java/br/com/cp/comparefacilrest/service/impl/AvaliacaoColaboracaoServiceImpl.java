@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,7 +55,7 @@ public class AvaliacaoColaboracaoServiceImpl {
         Optional<Pessoa> pessoa = pessoaRepository.findById(dto.getIdPessoa());
 
         AvaliacaoColaboracao avaliacaoColaboracao =
-                new AvaliacaoColaboracao(dto.getDataAvaliacao(), dto.getComentario(), pessoa.get(), colaboracao.get());
+                new AvaliacaoColaboracao(new Date(), dto.getComentario(), pessoa.get(), colaboracao.get());
         AvaliacaoColaboracao salvado = this.repository.save(avaliacaoColaboracao);
         if(salvado != null){
             return salvado;

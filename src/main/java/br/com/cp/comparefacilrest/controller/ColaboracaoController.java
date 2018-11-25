@@ -4,6 +4,7 @@ import br.com.cp.comparefacilrest.dto.ColaboracaoDTO;
 import br.com.cp.comparefacilrest.exception.NegocioException;
 import br.com.cp.comparefacilrest.model.Colaboracao;
 import br.com.cp.comparefacilrest.service.impl.ColaboracaoServiceImpl;
+import com.sun.org.apache.xpath.internal.operations.Neg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,17 @@ public class ColaboracaoController {
             e.getMessage();
         }
         return new ResponseEntity<>(colaboracao, HttpStatus.OK);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<Colaboracao> findById(@PathVariable Long id){
+        Colaboracao colaboracao = null;
+        try {
+            colaboracao = colaboracaoService.findById(id);
+        } catch (NegocioException e) {
+            e.getMessage();
+        }
+        return new ResponseEntity<>(colaboracao,HttpStatus.OK);
     }
 
     @GetMapping
@@ -66,6 +78,17 @@ public class ColaboracaoController {
             e.getMessage();
         }
         return new ResponseEntity<>("Deletado com sucesso", HttpStatus.OK);
+    }
+
+    @GetMapping("dynamicSearch/{pesquisa}")
+    public ResponseEntity<List<Colaboracao>> dynamicSearch(@PathVariable String pesquisa) {
+        List<Colaboracao> colaboracao = null;
+        try {
+            colaboracao = colaboracaoService.dynamicSearch(pesquisa);
+        }catch (NegocioException e){
+            e.getMessage();
+        }
+        return new ResponseEntity<>(colaboracao, HttpStatus.OK);
     }
 
 }
