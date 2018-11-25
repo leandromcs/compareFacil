@@ -62,10 +62,6 @@ public class ComentarioServiceImpl {
     }
 
     public List<Comentario> getComentarioByIdColaboracao(Long id) throws NegocioException{
-        List<Long> comentarioId = this.getComentarioId(id);
-        return this.comentarioRepository.findById(comentarioId);
-    }
-    private List<Long> getComentarioId(Long id) throws NegocioException {
         return this.comentarioRepository.getComentarioByIdColaboracao(id);
     }
 }
