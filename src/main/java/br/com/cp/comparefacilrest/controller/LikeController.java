@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import javax.ws.rs.Path;
+
 
 @RestController
 @RequestMapping("/like")
@@ -28,9 +30,15 @@ public class LikeController {
         return new ResponseEntity<>(like, HttpStatus.OK);
     }
 
-    @GetMapping
-    public ResponseEntity<List<Like>> findAll() {
-        List<Like> likes = likeService.findAll();
-        return new ResponseEntity<>(likes, HttpStatus.OK);
+    @GetMapping("/countLike/{id}")
+    public ResponseEntity<Long> countLike(@PathVariable Long id) {
+        Long likesLength = likeService.countLike(id);
+        return new ResponseEntity<>(likesLength, HttpStatus.OK);
+    }
+
+    @GetMapping("/countDeslike/{id}")
+    public ResponseEntity<Long> countDeslike(@PathVariable Long id) {
+        Long likesLength = likeService.countDeslike(id);
+        return new ResponseEntity<>(likesLength, HttpStatus.OK);
     }
 }

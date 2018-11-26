@@ -40,7 +40,12 @@ public class LikeServiceImpl {
        return this.likeRepository.save(like);
     }
 
-    public List<Like> findAll() {
-        return this.likeRepository.findAll();
+    public Long countLike(Long id) {
+        return this.likeRepository.countLike(id);
     }
+
+    public Long countDeslike(Long id) {
+        return this.likeRepository.countDeslike(id);
+    }
+
 }
