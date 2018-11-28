@@ -17,6 +17,8 @@ public interface LikeRepository extends CrudRepository<Like, Long> {
      @Query("SELECT COUNT (l.flagLike) FROM Like l WHERE l.flagLike = 'DESLIKE' AND l.colaboracao.id = :id  ")
      Long countDeslike(@Param("id") Long id);
 
-     @Query("SELECT l FROM Like l WHERE l.pessoa.id = :id")
-     Optional<Like> findLikeByIdPessoa(@Param("id") Long id);
+     @Query("SELECT l FROM Like l WHERE l.pessoa.id = :idPessoa AND l.colaboracao.id = :idColaboracao")
+     Optional<Like> findLikeByIdPessoaAndIdColaboracao(@Param("idPessoa") Long idPessoa, @Param("idColaboracao")Long idColaboracao);
+
+
 }

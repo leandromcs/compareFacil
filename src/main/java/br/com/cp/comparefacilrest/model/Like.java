@@ -38,6 +38,8 @@ public class Like {
         this.flagLike = flagLike;
     }
 
+    public Like() { }
+
 
     public Long getId() {
         return id;

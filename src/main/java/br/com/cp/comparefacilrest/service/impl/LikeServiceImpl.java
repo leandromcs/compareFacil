@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.ws.rs.BadRequestException;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,14 +31,20 @@ public class LikeServiceImpl {
 
 
 
-    public Like save(LikeDTO dto) {
+    public Like save(LikeDTO dto) throws BadRequestException {
 
        Optional<Pessoa> pessoa = this.pessoaRepository.findById(dto.getIdPessoa());
        Optional<Colaboracao> colaboracao = this.colaboracaoRepository.findById(dto.getIdColaboracao());
+       Like like = new Like(colaboracao.get(), pessoa.get(), dto.getFlagLike());
 
-       Like like = new Like(colaboracao.get(),pessoa.get(),dto.getFlagLike());
+       Like likeResult = this.likeRepository.findLikeByIdPessoaAndIdColaboracao(dto.getIdPessoa(),dto.getIdColaboracao()).get();
 
-       return this.likeRepository.save(like);
+       if(!(dto.getIdPessoa().equals(likeResult.getPessoa().getId()) && dto.getIdColaboracao().equals(likeResult.getColaboracao().getId()))) {
+            like = this.likeRepository.save(like);
+       }else {
+           System.out.print("JA EXISTE NO BANCO O LIKE ");
+       }
+       return like;
     }
 
     public Long countLike(Long id) {
@@ -48,6 +55,6 @@ public class LikeServiceImpl {
         return this.likeRepository.countDeslike(id);
     }
 
-    public Like findLikeByIdPessoa (Long id) { return this.likeRepository.findLikeByIdPessoa(id).get();}
+    public Like findLikeByIdPessoaAndIdColaboracao (Long idPessoa, Long idColaboracao) { return this.likeRepository.findLikeByIdPessoaAndIdColaboracao(idPessoa,idColaboracao).get();}
 
 }

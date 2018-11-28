@@ -43,8 +43,11 @@ public class LikeController {
         return new ResponseEntity<>(likesLength, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/likeByPessoa/{id}")
-    public ResponseEntity<Like> sfindLikeByIdPessoa(@PathVariable Long id){
-        return new ResponseEntity<>(likeService.findLikeByIdPessoa(id),HttpStatus.OK);
+    @GetMapping(value = "/likeByPessoa/{idPessoa}/{idColaboracao}")
+    public ResponseEntity<Like> findLikeByIdPessoaAndIdColaboracao(@PathVariable Long idPessoa,@PathVariable Long idColaboracao){
+        Like like;
+         like = likeService.findLikeByIdPessoaAndIdColaboracao(idPessoa,idColaboracao);
+
+        return new ResponseEntity<>(like,HttpStatus.OK);
     }
 }
