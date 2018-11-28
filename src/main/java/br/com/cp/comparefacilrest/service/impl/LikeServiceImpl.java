@@ -32,10 +32,10 @@ public class LikeServiceImpl {
 
     public Like save(LikeDTO dto) {
 
-       //Optional<Pessoa> pessoa = this.pessoaRepository.findById(dto.getIdPessoa());
+       Optional<Pessoa> pessoa = this.pessoaRepository.findById(dto.getIdPessoa());
        Optional<Colaboracao> colaboracao = this.colaboracaoRepository.findById(dto.getIdColaboracao());
 
-       Like like = new Like(colaboracao.get(),null,dto.getFlagLike());
+       Like like = new Like(colaboracao.get(),pessoa.get(),dto.getFlagLike());
 
        return this.likeRepository.save(like);
     }
@@ -47,5 +47,7 @@ public class LikeServiceImpl {
     public Long countDeslike(Long id) {
         return this.likeRepository.countDeslike(id);
     }
+
+    public Like findLikeByIdPessoa (Long id) { return this.likeRepository.findLikeByIdPessoa(id).get();}
 
 }

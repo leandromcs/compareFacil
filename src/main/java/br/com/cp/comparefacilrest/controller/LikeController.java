@@ -2,6 +2,7 @@ package br.com.cp.comparefacilrest.controller;
 
 import br.com.cp.comparefacilrest.dto.LikeDTO;
 import br.com.cp.comparefacilrest.model.Like;
+import br.com.cp.comparefacilrest.model.Pessoa;
 import br.com.cp.comparefacilrest.service.impl.LikeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,5 +41,10 @@ public class LikeController {
     public ResponseEntity<Long> countDeslike(@PathVariable Long id) {
         Long likesLength = likeService.countDeslike(id);
         return new ResponseEntity<>(likesLength, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/likeByPessoa/{id}")
+    public ResponseEntity<Like> sfindLikeByIdPessoa(@PathVariable Long id){
+        return new ResponseEntity<>(likeService.findLikeByIdPessoa(id),HttpStatus.OK);
     }
 }

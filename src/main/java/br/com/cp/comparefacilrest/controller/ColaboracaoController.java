@@ -6,10 +6,16 @@ import br.com.cp.comparefacilrest.model.Colaboracao;
 import br.com.cp.comparefacilrest.service.impl.ColaboracaoServiceImpl;
 import com.sun.org.apache.xpath.internal.operations.Neg;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.condition.ProducesRequestCondition;
 
+import javax.mail.internet.ContentType;
+import javax.ws.rs.Produces;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -89,6 +95,18 @@ public class ColaboracaoController {
             e.getMessage();
         }
         return new ResponseEntity<>(colaboracao, HttpStatus.OK);
+    }
+
+    @PostMapping("/image")
+    public ResponseEntity<Colaboracao> convertImage(@RequestParam("file") MultipartFile file) throws IOException {
+
+        byte[] imagesByte = this.colaboracaoService.convertImage(file);
+
+        Colaboracao colaboracao = new Colaboracao();
+        colaboracao.setImagem(imagesByte);
+        byte[] result = colaboracao.getImagem();
+
+        return new ResponseEntity(colaboracao, HttpStatus.OK);
     }
 
 }

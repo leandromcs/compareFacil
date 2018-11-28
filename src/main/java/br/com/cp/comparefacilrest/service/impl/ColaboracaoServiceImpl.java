@@ -9,10 +9,13 @@ import br.com.cp.comparefacilrest.repository.ColaboracaoRepository;
 import br.com.cp.comparefacilrest.repository.PessoaRepository;
 import br.com.cp.comparefacilrest.repository.PlanoServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -30,9 +33,11 @@ public class ColaboracaoServiceImpl {
     @Autowired
     private PessoaRepository pessoaRepository;
 
+    private byte[] image;
+
     public List<Colaboracao> getAll() throws NegocioException{
         List<Colaboracao> colaboracaos = repository.findAll();
-        if(colaboracaos.isEmpty()){
+        if(colaboracaos.equals(null)){
             throw new NegocioException("Não existe Colaboracaos cadastradas");
         } else {
             return colaboracaos;
@@ -53,11 +58,12 @@ public class ColaboracaoServiceImpl {
         return this.repository.getColaboracoesAprovadas();
 
     }
-    @Transactional(propagation = Propagation.REQUIRED)
+//    @Transactional(propagation = Propagation.REQUIRED) //Tava dando erro de transição ao dar save
+    @Transactional
     public Colaboracao save(ColaboracaoDTO dto) throws NegocioException {
         Optional<PlanoServico> consultado = this.planoServicoRepository.findById(dto.getPlanoServico().getId());
 
-        Colaboracao colaboracao = new Colaboracao(new Date(), dto.getDescricao(), dto.getNome(), AprovadoEnum.PENDENTE, dto.getVersao(), dto.getDataAtualizacao(), dto.getPessoa(), consultado.get());
+        Colaboracao colaboracao = new Colaboracao(new Date(), dto.getDescricao(), dto.getNome(), AprovadoEnum.PENDENTE, dto.getVersao(), dto.getDataAtualizacao(), dto.getPessoa(), consultado.get(),dto.getImagem());
         Colaboracao salvado = this.repository.save(colaboracao);
         if(salvado != null){
             return salvado;
@@ -90,5 +96,11 @@ public class ColaboracaoServiceImpl {
         } else {
             throw new NegocioException("Problema ao atualizar entidade");
         }
+    }
+
+    public byte[] convertImage(MultipartFile file) throws IOException {
+
+        return this.image = file.getBytes();
+
     }
 }

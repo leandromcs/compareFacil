@@ -4,6 +4,7 @@ import br.com.cp.comparefacilrest.dto.PessoaDTO;
 import br.com.cp.comparefacilrest.model.Pessoa;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PessoaService {
 
@@ -18,6 +19,10 @@ public interface PessoaService {
     List<Pessoa> getPessoasAtivas();
 
     Pessoa findById(Long id);
+
+    Pessoa login(String email, String password);
+
+    Pessoa findPessoaByEmail(String email);
 }
 
 

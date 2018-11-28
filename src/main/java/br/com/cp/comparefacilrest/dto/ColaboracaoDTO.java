@@ -17,10 +17,11 @@ public class ColaboracaoDTO {
     private Date dataAtualizacao;
     private Pessoa pessoa;
     private PlanoServico planoServico;
+    private byte[] imagem;
 
     public ColaboracaoDTO(){}
 
-    public ColaboracaoDTO(Long id, Date dataCriacao, String descricao, String nome, AprovadoEnum aprovado, String versao, Date dataAtualizacao, Pessoa pessoa, PlanoServico planoServico) {
+    public ColaboracaoDTO(Long id, Date dataCriacao, String descricao, String nome, AprovadoEnum aprovado, String versao, Date dataAtualizacao, Pessoa pessoa, PlanoServico planoServico, byte[] imagem) {
         this.id = id;
         this.dataCriacao = dataCriacao;
         this.descricao = descricao;
@@ -30,6 +31,7 @@ public class ColaboracaoDTO {
         this.dataAtualizacao = dataAtualizacao;
         this.pessoa = pessoa;
         this.planoServico = planoServico;
+        this.imagem = imagem;
     }
 
     public Long getId() {
@@ -102,5 +104,13 @@ public class ColaboracaoDTO {
 
     public void setPlanoServico(PlanoServico planoServico) {
         this.planoServico = planoServico;
+    }
+
+    public byte[] getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
     }
 }

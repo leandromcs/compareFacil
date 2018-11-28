@@ -33,11 +33,14 @@ public class Colaboracao {
     @ManyToOne
     private Pessoa pessoa;
 
-
     @ManyToOne(fetch = FetchType.EAGER)
     private PlanoServico planoServico;
 
-    public Colaboracao(Date dataCriacao, String descricao, String nome, AprovadoEnum aprovado, String versao, Date dataAtualizacao, Pessoa pessoa, PlanoServico planoServico) {
+    @Lob
+    @Column (name = "img_colaboracao")
+    private byte[] imagem;
+
+    public Colaboracao(Date dataCriacao, String descricao, String nome, AprovadoEnum aprovado, String versao, Date dataAtualizacao, Pessoa pessoa, PlanoServico planoServico, byte[] imagem) {
         this.dataCriacao = dataCriacao;
         this.descricao = descricao;
         this.nome = nome;
@@ -46,6 +49,7 @@ public class Colaboracao {
         this.dataAtualizacao = dataAtualizacao;
         this.pessoa = pessoa;
         this.planoServico = planoServico;
+        this.imagem = imagem;
     }
 
     public Colaboracao() {
@@ -123,4 +127,11 @@ public class Colaboracao {
         this.planoServico = planoServico;
     }
 
+    public byte[] getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
+    }
 }

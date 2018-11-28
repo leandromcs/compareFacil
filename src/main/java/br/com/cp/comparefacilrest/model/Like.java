@@ -1,5 +1,6 @@
 package br.com.cp.comparefacilrest.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -21,7 +22,7 @@ public class Like {
     @Column(name = "idt_like")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne( cascade = CascadeType.ALL)
     private Colaboracao colaboracao;
 
     @ManyToOne
